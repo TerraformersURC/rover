@@ -21,9 +21,7 @@ setup(
     entry_points={
         'console_scripts': [
             'controller_node = drive_train.controller_node:main',
-            'new_controller_node = drive_train.new_controller_node:main',
-            'driver_node = drive_train.driver_node:main',
-            'new_driver_node = drive_train.new_driver_node:main'
+            'driver_node = drive_train.driver_node:main'
         ],
     },
 )

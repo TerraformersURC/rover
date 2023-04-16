@@ -33,7 +33,7 @@ class Controller(Node):
     axes = Joy().axes
 
     def __init__(self):
-        super().__init__("new_controller_node")
+        super().__init__("controller_node")
 
         #create the publisher
         self.motor_control = self.create_publisher(MotorControl, 'motor_control', 10)
@@ -130,8 +130,7 @@ class Controller(Node):
         linear = msg.linear.x
         angular = msg.angular.z
 
-        #decided to use the raw Joy messages instead of the teleop_twist_joy
-        #cmd_vel the data was weird and didn't allow access to joysticks and buttons
+        
 
     #function for the subscriber for /odom_info
     def odom_callback(self, msg):
