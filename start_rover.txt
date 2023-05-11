@@ -1,8 +1,4 @@
-on host:
-    ~/catkin_ws: ros2 run ds4_driver ds4_driver_node.py
-    ~/catkin_ws/src/ds4_driver/ds4_driver/config: ros2 run ds4_driver ds4_twist_node.py --ros-args --params-file twist_2dof.yaml 
-
-    ~/md-day-rover-ws: ros2 run drive_train controller_node
-    
-on client:
-	~/md-day-rover-ws: ros2 run drive_train new_driver_node
+~/catkin_ws: ros2 run ds4_driver ds4_driver_node.py
+~/catkin_ws/src/ds4_driver/ds4_driver/config: ros2 run ds4_driver ds4_twist_node.py --ros-args --params-file twist_2dof.yaml 
+~/md-day-rover-ws: ros2 run drive_train controller_node
+~/md-day-rover-ws: ros2 run drive_train driver_node
