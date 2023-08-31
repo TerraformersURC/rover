@@ -48,6 +48,8 @@ class Driver(Node):
         #create the subscriber for /motor_control
         self.motor_callback = self.create_subscription(MotorControl, 'motor_control', self.motor_callback, 10)
         
+        self.cmd_vel_callback = self.create_subscription(Twist, 'cmd_vel', self.cmd_vel_callback, 10)
+
         #create the publisher for /odom_info
         self.odom_info = self.create_publisher(OdomInfo, 'odom_info', 10)
         #send data every 0.5 seconds
@@ -75,9 +77,19 @@ class Driver(Node):
         self._bl_speed = msg.bl
         self._br_speed = msg.br
 
+        pwm = (((self._fl_speed + 1.5) * 800) / 3) + 1100
+        self.get_logger().debug('My log message %d' % (pwm))
+        arduino.write(int(pwm))
+
         speeds = np.array(np.absolute(np.multiply([self._fl_speed,self._fr_speed, self._bl_speed, self._br_speed], 255/1.5)).astype(int), dtype='uint8')
         #print(len(speeds))
-        arduino.write(encode(speeds,self._bl_speed>=0,self._br_speed>=0))
+        #arduino.write(encode(speeds,self._bl_speed>=0,self._br_speed>=0))
+    
+    def cmd_vel_callback(self, msg):
+        pwm = (((msg.linear.x + 1.5) * 800) / 3) + 1100
+        self.get_logger().debug('My log message %d' % (pwm))
+        arduino.write(int(pwm))
+
 
 
 def main(args=None):

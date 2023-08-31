@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(motor_control_pkg)
+project(rover_pkg)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -7,9 +7,34 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
-# uncomment the following section in order to fill in
-# further dependencies manually.
-# find_package(<dependency> REQUIRED)
+#find_package(iostream REQUIRED)
+#find_package(fcntl REQUIRED)
+#find_package(termios REQUIRED)
+#find_package(unistd REQUIRED)
+#find_package(cstring REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(std_msgs REQUIRED)
+find_package(rover_interfaces REQUIRED)
+
+add_executable(driver_node_v2 src/driver_node_v2.cpp)
+ament_target_dependencies(
+  driver_node_v2                          
+  #iostream
+  #fcntl
+  #termios
+  #unistd
+  #cstring
+  rclcpp
+  geometry_msgs
+  std_msgs
+  rover_interfaces
+)
+
+install(TARGETS
+  driver_node_v2
+  DESTINATION lib/${PROJECT_NAME}
+)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -23,17 +48,4 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
-find_package(ament_cmake REQUIRED)
-find_package(rclcpp REQUIRED)
-
-include_directories(include)
-
-add_executable(motor_control_node src/motor_control_node.cpp)
-target_link_libraries(motor_control_node wiringPi)
-ament_target_dependencies(motor_control_node rclcpp)
-
-install(TARGETS motor_control_node
-  DESTINATION lib/${PROJECT_NAME})
-  
 ament_package()
-
