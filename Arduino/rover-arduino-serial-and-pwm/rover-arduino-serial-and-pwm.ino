@@ -1,9 +1,9 @@
 #include <Servo.h>
 
-byte aPin = 5;
-byte bPin = 6;
-byte cPin = 9;
-byte dPin = 10;
+byte aPin = 40;
+byte bPin = 42;
+byte cPin = 46;
+byte dPin = 44;
 
 Servo motorA;
 Servo motorB;

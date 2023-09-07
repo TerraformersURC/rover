@@ -46,7 +46,7 @@ class MotorDataSubscriber : public rclcpp::Node{
         std::sprintf(formattedData, "<%d, %d, %d, %d>", aVel, bVel, cVel, dVel);
         const char* data = formattedData; // Assign the formatted string to the data variable
         int bytesWritten = write(serialPort, data, strlen(data));
-        sleep(0.5);
+        sleep(0.75);
     
         // if (bytesWritten == -1) {
             // RCLCPP_ERROR(this->get_logger(), "Error writing to serial port")

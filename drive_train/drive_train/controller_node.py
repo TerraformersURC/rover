@@ -129,14 +129,30 @@ class Controller(Node):
     def velocity_callback(self, msg):
         
         #extract the linear and angular velocities
-        linear = msg.linear.x
-        angular = msg.angular.z
+        x = msg.linear.x
+        z = msg.angular.z
 
-        #calculate wheel speeds in m/s
-        left_speed = linear - angular*self._wheel_base/2
-        right_speed = linear + angular*self._wheel_base/2
+        '''
+        Forwards:
+        Backwards:
+        Left:
+        Right:
+        '''
+        # Forward (x>0)
+        # Backward (x<0)
+        # Left (z>0)
+        # Right (z<0)
 
-        #PID loop goes here.
+        if (z > 0):
+            left_speed = z*-1
+            right_speed = z
+        elif (z < 0):
+            left_speed = z
+            right_speed = z*-1
+        else:
+            left_speed = x
+            right_speed = x
+
 
         self._fl_speed = left_speed
         self._bl_speed = left_speed
