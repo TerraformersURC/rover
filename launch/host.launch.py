@@ -34,4 +34,14 @@ def generate_launch_description():
         ),
     ]
 
-    return LaunchDescription(ds4_driver_nodes + drive_train_nodes)
+
+    # Launch nodes from the rover_pkg package
+    rover_pkg_nodes = [
+        Node(
+            package='rover_pkg',
+            executable='driver_node_v2',
+            output='screen'
+        ),
+    ]
+
+    return LaunchDescription(ds4_driver_nodes + drive_train_nodes + rover_pkg_nodes)
