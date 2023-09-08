@@ -1,7 +1,7 @@
 
 # Terraformers URC Rover
 
-Software for the development rover. To be run partially on a laptop with a PS4 controller and partially on the rover's Raspberry Pi.
+Software for the development rover. To be run on the Rover's Raspberry Pi 4.
 
 
 
@@ -9,7 +9,7 @@ Software for the development rover. To be run partially on a laptop with a PS4 c
 
 We are using ds4_driver in order to control the rover with a PlayStation 4 controller.
 
-To set up and use the software, do the following on your laptop.
+To set up and use the software, do the following the RPi4.
 
     1. Clone this repo into src
     2. cd into src
@@ -21,10 +21,4 @@ To set up and use the software, do the following on your laptop.
         4d. udevadm trigger
     6. Back in src, git clone https://github.com/naoki-mizuno/ds4_driver.git
     7. Build your workspace
-    8. ros2 launch host.launch.py
-
-Then, do the following on the RPi if it hasn't been already set up.
-    
-    1. Clone this repo into src
-    2. Build your workspace
-    3. ros2 launch rover.launch.py
+    8. ros2 launch Terraformers-Rover/launch/host.launch.py
