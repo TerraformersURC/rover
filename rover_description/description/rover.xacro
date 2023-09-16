@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<robot name="rover" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find rover_description)/description/links.xacro" />
+<xacro:include filename="$(find rover_description)/description/joints.xacro" />
+<xacro:include filename="$(find rover_description)/description/transmissions.xacro" />
+<xacro:include filename="$(find rover_description)/description/gazebo.xacro" />
+
+</robot>

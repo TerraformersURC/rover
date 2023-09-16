@@ -1,0 +1,103 @@
+<?xml version="1.0" ?>
+<robot name="rover" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+<transmission name="right_wheel_link_to_base_link_joint_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="right_wheel_link_to_base_link_joint">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="right_wheel_link_to_base_link_joint_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="left_wheel_link_to_base_link_joint_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="left_wheel_link_to_base_link_joint">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="left_wheel_link_to_base_link_joint_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="rear_right_wheel_to_wheel_link_joint_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="rear_right_wheel_to_wheel_link_joint">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="rear_right_wheel_to_wheel_link_joint_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="front_right_wheel_to_wheel_link_joint_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="front_right_wheel_to_wheel_link_joint">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="front_right_wheel_to_wheel_link_joint_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="front_left_wheel_to_wheel_link_joint_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="front_left_wheel_to_wheel_link_joint">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="front_left_wheel_to_wheel_link_joint_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="rear_left_wheel_to_wheel_link_joint_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="rear_left_wheel_to_wheel_link_joint">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="rear_left_wheel_to_wheel_link_joint_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="mid_balance_link_to_base_link_joint_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="mid_balance_link_to_base_link_joint">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="mid_balance_link_to_base_link_joint_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="right_balance_link_to_mid_balance_link_joint_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="right_balance_link_to_mid_balance_link_joint">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="right_balance_link_to_mid_balance_link_joint_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="left_balance_link_to_mid_balance_link_joint_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="left_balance_link_to_mid_balance_link_joint">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="left_balance_link_to_mid_balance_link_joint_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+</robot>

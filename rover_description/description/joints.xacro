@@ -1,0 +1,89 @@
+<?xml version="1.0" ?>
+<robot name="rover" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<joint name="right_wheel_link_to_base_link_joint" type="continuous">
+  <origin xyz="0.0 -0.192 0.307734" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="wheel_link_right"/>
+  <axis xyz="-0.0 -1.0 0.0"/>
+</joint>
+
+<joint name="left_wheel_link_to_base_link_joint" type="continuous">
+  <origin xyz="0.0 0.192 0.307734" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="wheel_link_left"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+<joint name="rear_right_wheel_to_wheel_link_joint" type="continuous">
+  <origin xyz="-0.28198 -0.043 -0.207734" rpy="0 0 0"/>
+  <parent link="wheel_link_right"/>
+  <child link="wheel_rear_right"/>
+  <axis xyz="-0.0 -1.0 -0.0"/>
+</joint>
+
+<joint name="front_right_wheel_to_wheel_link_joint" type="continuous">
+  <origin xyz="0.28198 -0.043 -0.207734" rpy="0 0 0"/>
+  <parent link="wheel_link_right"/>
+  <child link="wheel_front_right"/>
+  <axis xyz="-0.0 -1.0 -0.0"/>
+</joint>
+
+<joint name="front_left_wheel_to_wheel_link_joint" type="continuous">
+  <origin xyz="0.28198 0.043 -0.207734" rpy="0 0 0"/>
+  <parent link="wheel_link_left"/>
+  <child link="wheel_front_left"/>
+  <axis xyz="0.0 1.0 -0.0"/>
+</joint>
+
+<joint name="rear_left_wheel_to_wheel_link_joint" type="continuous">
+  <origin xyz="-0.28198 0.043 -0.207734" rpy="0 0 0"/>
+  <parent link="wheel_link_left"/>
+  <child link="wheel_rear_left"/>
+  <axis xyz="0.0 1.0 -0.0"/>
+</joint>
+
+<joint name="mid_balance_link_to_base_link_joint" type="continuous">
+  <origin xyz="0.295 0.0 0.310934" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="mid_balance_link"/>
+  <axis xyz="1.0 0.0 -0.0"/>
+</joint>
+
+<joint name="right_balance_link_to_mid_balance_link_joint" type="continuous">
+  <origin xyz="0.0 -0.220009 0.0" rpy="0 0 0"/>
+  <parent link="mid_balance_link"/>
+  <child link="right_balance_link"/>
+  <axis xyz="1.0 0.0 -0.0"/>
+</joint>
+
+<joint name="left_balance_link_to_mid_balance_link_joint" type="continuous">
+  <origin xyz="0.0 0.220009 0.0" rpy="0 0 0"/>
+  <parent link="mid_balance_link"/>
+  <child link="left_balance_link"/>
+  <axis xyz="1.0 0.0 -0.0"/>
+</joint>
+
+<gazebo>
+  <joint name="right_balance_link_to_right_wheel_link_joint" type="continuous">
+    <pose>0.0 0.0 0.0 0 0 0</pose>
+    <parent>right_wheel_link</parent>
+    <child>right_balance_link</child>
+    <axis> 
+      <xyz>0.0 1.0 -0.0</xyz>
+    </axis>
+  </joint>
+</gazebo>
+
+<gazebo>
+  <joint name="left_balance_link_to_left_wheel_link_joint" type="continuous">
+    <pose>0.0 0.0 0.0 0 0 0</pose>
+    <parent>left_wheel_link</parent>
+    <child>left_balance_link</child>
+    <axis> 
+      <xyz>0.0 1.0 -0.0</xyz>
+    </axis>
+  </joint>
+</gazebo>
+
+</robot>
