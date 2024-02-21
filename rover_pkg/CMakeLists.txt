@@ -7,32 +7,19 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
-#find_package(iostream REQUIRED)
-#find_package(fcntl REQUIRED)
-#find_package(termios REQUIRED)
-#find_package(unistd REQUIRED)
-#find_package(cstring REQUIRED)
 find_package(rclcpp REQUIRED)
-find_package(geometry_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
-find_package(rover_interfaces REQUIRED)
 
-add_executable(driver_node_v2 src/driver_node_v2.cpp)
+add_executable(serial_comms_node src/serial_comms_node.cpp)
 ament_target_dependencies(
-  driver_node_v2                          
-  #iostream
-  #fcntl
-  #termios
-  #unistd
-  #cstring
-  rclcpp
-  geometry_msgs
+  serial_comms_node
   std_msgs
-  rover_interfaces
+  rclcpp
 )
 
+
 install(TARGETS
-  driver_node_v2
+  serial_comms_node
   DESTINATION lib/${PROJECT_NAME}
 )
 

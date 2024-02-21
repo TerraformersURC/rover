@@ -3,10 +3,8 @@
 <package format="3">
   <name>rover_pkg</name>
   <version>0.0.0</version>
-  <description>This packages contains code 
-                that will be run on the rover's
-                on-board computer.</description>
-  <maintainer email="thoennesn@gmail.com">ndt</maintainer>
+  <description>This packages contains a template for ROS-Arduino serial communication. </description>
+  <maintainer email="nd10s@umd.edu">ndt</maintainer>
   <license>TODO: License declaration</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
