@@ -1,2 +1,2 @@
-# Terraformers-Rover
-Software for the URC Rover
+# rover
+Software for the rover
