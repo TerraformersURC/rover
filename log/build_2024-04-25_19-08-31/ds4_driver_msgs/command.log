@@ -1,6 +1,0 @@
-Invoking command in '/home/terraformers/rover/build/ds4_driver_msgs': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/terraformers/rover/src/ds4_driver/ds4_driver_msgs -DCMAKE_INSTALL_PREFIX=/home/terraformers/rover/install/ds4_driver_msgs
-Invoked command in '/home/terraformers/rover/build/ds4_driver_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/terraformers/rover/src/ds4_driver/ds4_driver_msgs -DCMAKE_INSTALL_PREFIX=/home/terraformers/rover/install/ds4_driver_msgs
-Invoking command in '/home/terraformers/rover/build/ds4_driver_msgs': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/terraformers/rover/build/ds4_driver_msgs -- -j8 -l8
-Invoked command in '/home/terraformers/rover/build/ds4_driver_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/terraformers/rover/build/ds4_driver_msgs -- -j8 -l8
-Invoking command in '/home/terraformers/rover/build/ds4_driver_msgs': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/terraformers/rover/build/ds4_driver_msgs
-Invoked command in '/home/terraformers/rover/build/ds4_driver_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/terraformers/rover/build/ds4_driver_msgs
