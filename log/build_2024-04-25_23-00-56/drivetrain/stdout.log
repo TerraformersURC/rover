@@ -1,0 +1,18 @@
+running develop
+running egg_info
+writing drivetrain.egg-info/PKG-INFO
+writing dependency_links to drivetrain.egg-info/dependency_links.txt
+writing entry points to drivetrain.egg-info/entry_points.txt
+writing requirements to drivetrain.egg-info/requires.txt
+writing top-level names to drivetrain.egg-info/top_level.txt
+reading manifest file 'drivetrain.egg-info/SOURCES.txt'
+writing manifest file 'drivetrain.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/terraformers/rover/install/drivetrain/lib/python3.10/site-packages/drivetrain.egg-link (link to .)
+Installing controller script to /home/terraformers/rover/install/drivetrain/lib/drivetrain
+Installing driver_node script to /home/terraformers/rover/install/drivetrain/lib/drivetrain
+
+Installed /home/terraformers/rover/build/drivetrain
+running symlink_data
+symbolically linking /home/terraformers/rover/build/drivetrain/resource/drivetrain -> /home/terraformers/rover/install/drivetrain/share/ament_index/resource_index/packages
+symbolically linking /home/terraformers/rover/build/drivetrain/package.xml -> /home/terraformers/rover/install/drivetrain/share/drivetrain

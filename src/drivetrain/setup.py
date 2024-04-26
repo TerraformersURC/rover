@@ -20,6 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'controller = drivetrain.controller:main',
+            'driver_node = drivetrain.driver:main'
         ],
     },
 )

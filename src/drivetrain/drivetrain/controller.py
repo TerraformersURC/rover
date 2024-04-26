@@ -5,8 +5,8 @@ from rclpy.timer import Timer
 from geometry_msgs.msg import Twist
 from sensor_msgs.msg import Joy
 from std_msgs.msg import Float64
-from rover_interfaces.msg import MotorControl
-from rover_interfaces.msg import OdomInfo
+from interfaces.msg import MotorControl
+from interfaces.msg import OdomInfo
 
 #sets the max and min speeds
 def _clip(value, min, max):
@@ -26,7 +26,7 @@ class Controller(Node):
     _br_speed = 0.0
 
     def __init__(self):
-        super().__init__("controller_node")
+        super().__init__("controller")
 
         #create the publisher
         self.motor_control = self.create_publisher(MotorControl, 'motor_control', 10)
