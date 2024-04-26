@@ -12,9 +12,9 @@ config.enable_stream(rs.stream.color, 640, 480, rs.format.bgr8, 30)
 pipeline.start(config)
 
 try:
-    while True:Breadcrumbs
+    while True:#Breadcrumbs
 
-    rover/rover_interfaces/msg
+    #rover/rover_interfaces/msg
         # Wait for a coherent pair of frames: depth and color
         frames = pipeline.wait_for_frames()
         depth_frame = frames.get_depth_frame()

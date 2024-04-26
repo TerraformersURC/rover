@@ -1,0 +1,41 @@
+[3.290s] Invoking command in '/home/terraformers/rover/src/commstest': PYTHONPATH=/home/terraformers/rover/build/commstest/prefix_override:/home/terraformers/rover/install/commstest/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/commstest build --build-base /home/terraformers/rover/build/commstest/build install --record /home/terraformers/rover/build/commstest/install.log --single-version-externally-managed install_data
+[3.759s] running egg_info
+[3.760s] creating ../../build/commstest/commstest.egg-info
+[3.761s] writing ../../build/commstest/commstest.egg-info/PKG-INFO
+[3.761s] writing dependency_links to ../../build/commstest/commstest.egg-info/dependency_links.txt
+[3.762s] writing entry points to ../../build/commstest/commstest.egg-info/entry_points.txt
+[3.762s] writing requirements to ../../build/commstest/commstest.egg-info/requires.txt
+[3.762s] writing top-level names to ../../build/commstest/commstest.egg-info/top_level.txt
+[3.763s] writing manifest file '../../build/commstest/commstest.egg-info/SOURCES.txt'
+[3.766s] reading manifest file '../../build/commstest/commstest.egg-info/SOURCES.txt'
+[3.767s] writing manifest file '../../build/commstest/commstest.egg-info/SOURCES.txt'
+[3.767s] running build
+[3.767s] running build_py
+[3.768s] creating /home/terraformers/rover/build/commstest/build
+[3.768s] creating /home/terraformers/rover/build/commstest/build/lib
+[3.768s] creating /home/terraformers/rover/build/commstest/build/lib/commstest
+[3.769s] copying commstest/publisher.py -> /home/terraformers/rover/build/commstest/build/lib/commstest
+[3.769s] copying commstest/__init__.py -> /home/terraformers/rover/build/commstest/build/lib/commstest
+[3.769s] copying commstest/subscriber.py -> /home/terraformers/rover/build/commstest/build/lib/commstest
+[3.770s] running install
+[3.770s] running install_lib
+[3.771s] creating /home/terraformers/rover/install/commstest/lib/python3.10/site-packages/commstest
+[3.772s] copying /home/terraformers/rover/build/commstest/build/lib/commstest/publisher.py -> /home/terraformers/rover/install/commstest/lib/python3.10/site-packages/commstest
+[3.772s] copying /home/terraformers/rover/build/commstest/build/lib/commstest/__init__.py -> /home/terraformers/rover/install/commstest/lib/python3.10/site-packages/commstest
+[3.772s] copying /home/terraformers/rover/build/commstest/build/lib/commstest/subscriber.py -> /home/terraformers/rover/install/commstest/lib/python3.10/site-packages/commstest
+[3.774s] byte-compiling /home/terraformers/rover/install/commstest/lib/python3.10/site-packages/commstest/publisher.py to publisher.cpython-310.pyc
+[3.775s] byte-compiling /home/terraformers/rover/install/commstest/lib/python3.10/site-packages/commstest/__init__.py to __init__.cpython-310.pyc
+[3.775s] byte-compiling /home/terraformers/rover/install/commstest/lib/python3.10/site-packages/commstest/subscriber.py to subscriber.cpython-310.pyc
+[3.776s] running install_data
+[3.776s] creating /home/terraformers/rover/install/commstest/share/ament_index
+[3.776s] creating /home/terraformers/rover/install/commstest/share/ament_index/resource_index
+[3.776s] creating /home/terraformers/rover/install/commstest/share/ament_index/resource_index/packages
+[3.776s] copying resource/commstest -> /home/terraformers/rover/install/commstest/share/ament_index/resource_index/packages
+[3.777s] copying package.xml -> /home/terraformers/rover/install/commstest/share/commstest
+[3.777s] running install_egg_info
+[3.780s] Copying ../../build/commstest/commstest.egg-info to /home/terraformers/rover/install/commstest/lib/python3.10/site-packages/commstest-0.0.0-py3.10.egg-info
+[3.782s] running install_scripts
+[3.824s] Installing publisher script to /home/terraformers/rover/install/commstest/lib/commstest
+[3.825s] Installing subscriber script to /home/terraformers/rover/install/commstest/lib/commstest
+[3.826s] writing list of installed files to '/home/terraformers/rover/build/commstest/install.log'
+[3.924s] Invoked command in '/home/terraformers/rover/src/commstest' returned '0': PYTHONPATH=/home/terraformers/rover/build/commstest/prefix_override:/home/terraformers/rover/install/commstest/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/commstest build --build-base /home/terraformers/rover/build/commstest/build install --record /home/terraformers/rover/build/commstest/install.log --single-version-externally-managed install_data

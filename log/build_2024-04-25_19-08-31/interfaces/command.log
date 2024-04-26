@@ -1,0 +1,6 @@
+Invoking command in '/home/terraformers/rover/build/interfaces': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/terraformers/rover/src/interfaces -DCMAKE_INSTALL_PREFIX=/home/terraformers/rover/install/interfaces
+Invoked command in '/home/terraformers/rover/build/interfaces' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/terraformers/rover/src/interfaces -DCMAKE_INSTALL_PREFIX=/home/terraformers/rover/install/interfaces
+Invoking command in '/home/terraformers/rover/build/interfaces': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/terraformers/rover/build/interfaces -- -j8 -l8
+Invoked command in '/home/terraformers/rover/build/interfaces' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/terraformers/rover/build/interfaces -- -j8 -l8
+Invoking command in '/home/terraformers/rover/build/interfaces': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/terraformers/rover/build/interfaces
+Invoked command in '/home/terraformers/rover/build/interfaces' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/terraformers/rover/build/interfaces

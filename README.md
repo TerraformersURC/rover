@@ -1,2 +1,2 @@
-# rover
-Software for the rover
+# Rover 
+Software for Terraformer's rover

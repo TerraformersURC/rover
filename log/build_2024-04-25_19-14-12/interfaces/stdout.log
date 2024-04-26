@@ -1,0 +1,25 @@
+-- Found ament_cmake: 1.3.8 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Override CMake install command with custom implementation using symlinks instead of copying resources
+-- Found ament_lint_auto: 0.12.10 (/opt/ros/humble/share/ament_lint_auto/cmake)
+-- Added test 'lint_cmake' to check CMake code style
+-- Added test 'xmllint' to check XML markup files
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/terraformers/rover/build/interfaces
+-- Install configuration: ""
+-- Execute custom install script
+-- Symlinking: /home/terraformers/rover/install/interfaces/share/ament_index/resource_index/package_run_dependencies/interfaces
+-- Symlinking: /home/terraformers/rover/install/interfaces/share/ament_index/resource_index/parent_prefix_path/interfaces
+-- Symlinking: /home/terraformers/rover/install/interfaces/share/interfaces/environment/ament_prefix_path.sh
+-- Symlinking: /home/terraformers/rover/install/interfaces/share/interfaces/environment/ament_prefix_path.dsv
+-- Symlinking: /home/terraformers/rover/install/interfaces/share/interfaces/environment/path.sh
+-- Symlinking: /home/terraformers/rover/install/interfaces/share/interfaces/environment/path.dsv
+-- Symlinking: /home/terraformers/rover/install/interfaces/share/interfaces/local_setup.bash
+-- Symlinking: /home/terraformers/rover/install/interfaces/share/interfaces/local_setup.sh
+-- Symlinking: /home/terraformers/rover/install/interfaces/share/interfaces/local_setup.zsh
+-- Symlinking: /home/terraformers/rover/install/interfaces/share/interfaces/local_setup.dsv
+-- Symlinking: /home/terraformers/rover/install/interfaces/share/interfaces/package.dsv
+-- Symlinking: /home/terraformers/rover/install/interfaces/share/ament_index/resource_index/packages/interfaces
+-- Symlinking: /home/terraformers/rover/install/interfaces/share/interfaces/cmake/interfacesConfig.cmake
+-- Symlinking: /home/terraformers/rover/install/interfaces/share/interfaces/cmake/interfacesConfig-version.cmake
+-- Symlinking: /home/terraformers/rover/install/interfaces/share/interfaces/package.xml

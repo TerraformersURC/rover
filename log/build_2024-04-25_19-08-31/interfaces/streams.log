@@ -1,0 +1,42 @@
+[2.018s] Invoking command in '/home/terraformers/rover/build/interfaces': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/terraformers/rover/src/interfaces -DCMAKE_INSTALL_PREFIX=/home/terraformers/rover/install/interfaces
+[2.110s] -- The C compiler identification is GNU 11.4.0
+[2.203s] -- The CXX compiler identification is GNU 11.4.0
+[2.215s] -- Detecting C compiler ABI info
+[2.330s] -- Detecting C compiler ABI info - done
+[2.340s] -- Check for working C compiler: /usr/bin/cc - skipped
+[2.341s] -- Detecting C compile features
+[2.341s] -- Detecting C compile features - done
+[2.346s] -- Detecting CXX compiler ABI info
+[2.479s] -- Detecting CXX compiler ABI info - done
+[2.491s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[2.491s] -- Detecting CXX compile features
+[2.492s] -- Detecting CXX compile features - done
+[2.496s] -- Found ament_cmake: 1.3.8 (/opt/ros/humble/share/ament_cmake/cmake)
+[2.832s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[3.016s] -- Found ament_lint_auto: 0.12.10 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[3.221s] -- Added test 'lint_cmake' to check CMake code style
+[3.228s] -- Added test 'xmllint' to check XML markup files
+[3.233s] -- Configuring done
+[3.241s] -- Generating done
+[3.244s] -- Build files have been written to: /home/terraformers/rover/build/interfaces
+[3.269s] Invoked command in '/home/terraformers/rover/build/interfaces' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/terraformers/rover/src/interfaces -DCMAKE_INSTALL_PREFIX=/home/terraformers/rover/install/interfaces
+[3.272s] Invoking command in '/home/terraformers/rover/build/interfaces': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/terraformers/rover/build/interfaces -- -j8 -l8
+[3.378s] Invoked command in '/home/terraformers/rover/build/interfaces' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/terraformers/rover/build/interfaces -- -j8 -l8
+[3.454s] Invoking command in '/home/terraformers/rover/build/interfaces': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/terraformers/rover/build/interfaces
+[3.595s] -- Install configuration: ""
+[3.595s] -- Installing: /home/terraformers/rover/install/interfaces/share/ament_index/resource_index/package_run_dependencies/interfaces
+[3.595s] -- Installing: /home/terraformers/rover/install/interfaces/share/ament_index/resource_index/parent_prefix_path/interfaces
+[3.597s] -- Installing: /home/terraformers/rover/install/interfaces/share/interfaces/environment/ament_prefix_path.sh
+[3.597s] -- Installing: /home/terraformers/rover/install/interfaces/share/interfaces/environment/ament_prefix_path.dsv
+[3.597s] -- Installing: /home/terraformers/rover/install/interfaces/share/interfaces/environment/path.sh
+[3.597s] -- Installing: /home/terraformers/rover/install/interfaces/share/interfaces/environment/path.dsv
+[3.598s] -- Installing: /home/terraformers/rover/install/interfaces/share/interfaces/local_setup.bash
+[3.598s] -- Installing: /home/terraformers/rover/install/interfaces/share/interfaces/local_setup.sh
+[3.598s] -- Installing: /home/terraformers/rover/install/interfaces/share/interfaces/local_setup.zsh
+[3.598s] -- Installing: /home/terraformers/rover/install/interfaces/share/interfaces/local_setup.dsv
+[3.598s] -- Installing: /home/terraformers/rover/install/interfaces/share/interfaces/package.dsv
+[3.598s] -- Installing: /home/terraformers/rover/install/interfaces/share/ament_index/resource_index/packages/interfaces
+[3.598s] -- Installing: /home/terraformers/rover/install/interfaces/share/interfaces/cmake/interfacesConfig.cmake
+[3.598s] -- Installing: /home/terraformers/rover/install/interfaces/share/interfaces/cmake/interfacesConfig-version.cmake
+[3.598s] -- Installing: /home/terraformers/rover/install/interfaces/share/interfaces/package.xml
+[3.599s] Invoked command in '/home/terraformers/rover/build/interfaces' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/terraformers/rover/build/interfaces

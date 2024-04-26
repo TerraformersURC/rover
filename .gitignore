@@ -3,6 +3,8 @@ logs/
 build/
 bin/
 lib/
+ds4_driver/
+ds4drv/
 msg_gen/
 srv_gen/
 msg/*Action.msg

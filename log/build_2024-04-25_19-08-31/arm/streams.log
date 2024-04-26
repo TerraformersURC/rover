@@ -1,0 +1,33 @@
+[3.297s] Invoking command in '/home/terraformers/rover/src/arm': PYTHONPATH=/home/terraformers/rover/build/arm/prefix_override:/home/terraformers/rover/install/arm/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/arm build --build-base /home/terraformers/rover/build/arm/build install --record /home/terraformers/rover/build/arm/install.log --single-version-externally-managed install_data
+[3.764s] running egg_info
+[3.765s] creating ../../build/arm/arm.egg-info
+[3.765s] writing ../../build/arm/arm.egg-info/PKG-INFO
+[3.766s] writing dependency_links to ../../build/arm/arm.egg-info/dependency_links.txt
+[3.766s] writing entry points to ../../build/arm/arm.egg-info/entry_points.txt
+[3.766s] writing requirements to ../../build/arm/arm.egg-info/requires.txt
+[3.766s] writing top-level names to ../../build/arm/arm.egg-info/top_level.txt
+[3.767s] writing manifest file '../../build/arm/arm.egg-info/SOURCES.txt'
+[3.771s] reading manifest file '../../build/arm/arm.egg-info/SOURCES.txt'
+[3.772s] writing manifest file '../../build/arm/arm.egg-info/SOURCES.txt'
+[3.772s] running build
+[3.773s] running build_py
+[3.773s] creating /home/terraformers/rover/build/arm/build
+[3.773s] creating /home/terraformers/rover/build/arm/build/lib
+[3.773s] creating /home/terraformers/rover/build/arm/build/lib/arm
+[3.773s] copying arm/__init__.py -> /home/terraformers/rover/build/arm/build/lib/arm
+[3.773s] running install
+[3.774s] running install_lib
+[3.776s] creating /home/terraformers/rover/install/arm/lib/python3.10/site-packages/arm
+[3.776s] copying /home/terraformers/rover/build/arm/build/lib/arm/__init__.py -> /home/terraformers/rover/install/arm/lib/python3.10/site-packages/arm
+[3.777s] byte-compiling /home/terraformers/rover/install/arm/lib/python3.10/site-packages/arm/__init__.py to __init__.cpython-310.pyc
+[3.778s] running install_data
+[3.778s] creating /home/terraformers/rover/install/arm/share/ament_index
+[3.778s] creating /home/terraformers/rover/install/arm/share/ament_index/resource_index
+[3.779s] creating /home/terraformers/rover/install/arm/share/ament_index/resource_index/packages
+[3.779s] copying resource/arm -> /home/terraformers/rover/install/arm/share/ament_index/resource_index/packages
+[3.780s] copying package.xml -> /home/terraformers/rover/install/arm/share/arm
+[3.780s] running install_egg_info
+[3.782s] Copying ../../build/arm/arm.egg-info to /home/terraformers/rover/install/arm/lib/python3.10/site-packages/arm-0.0.0-py3.10.egg-info
+[3.784s] running install_scripts
+[3.828s] writing list of installed files to '/home/terraformers/rover/build/arm/install.log'
+[3.919s] Invoked command in '/home/terraformers/rover/src/arm' returned '0': PYTHONPATH=/home/terraformers/rover/build/arm/prefix_override:/home/terraformers/rover/install/arm/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/arm build --build-base /home/terraformers/rover/build/arm/build install --record /home/terraformers/rover/build/arm/install.log --single-version-externally-managed install_data

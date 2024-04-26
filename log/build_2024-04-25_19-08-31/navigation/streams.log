@@ -1,0 +1,33 @@
+[3.279s] Invoking command in '/home/terraformers/rover/src/navigation': PYTHONPATH=/home/terraformers/rover/build/navigation/prefix_override:/home/terraformers/rover/install/navigation/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/navigation build --build-base /home/terraformers/rover/build/navigation/build install --record /home/terraformers/rover/build/navigation/install.log --single-version-externally-managed install_data
+[3.746s] running egg_info
+[3.747s] creating ../../build/navigation/navigation.egg-info
+[3.748s] writing ../../build/navigation/navigation.egg-info/PKG-INFO
+[3.748s] writing dependency_links to ../../build/navigation/navigation.egg-info/dependency_links.txt
+[3.748s] writing entry points to ../../build/navigation/navigation.egg-info/entry_points.txt
+[3.749s] writing requirements to ../../build/navigation/navigation.egg-info/requires.txt
+[3.749s] writing top-level names to ../../build/navigation/navigation.egg-info/top_level.txt
+[3.749s] writing manifest file '../../build/navigation/navigation.egg-info/SOURCES.txt'
+[3.752s] reading manifest file '../../build/navigation/navigation.egg-info/SOURCES.txt'
+[3.754s] writing manifest file '../../build/navigation/navigation.egg-info/SOURCES.txt'
+[3.754s] running build
+[3.754s] running build_py
+[3.755s] creating /home/terraformers/rover/build/navigation/build
+[3.755s] creating /home/terraformers/rover/build/navigation/build/lib
+[3.755s] creating /home/terraformers/rover/build/navigation/build/lib/navigation
+[3.755s] copying navigation/__init__.py -> /home/terraformers/rover/build/navigation/build/lib/navigation
+[3.756s] running install
+[3.756s] running install_lib
+[3.757s] creating /home/terraformers/rover/install/navigation/lib/python3.10/site-packages/navigation
+[3.757s] copying /home/terraformers/rover/build/navigation/build/lib/navigation/__init__.py -> /home/terraformers/rover/install/navigation/lib/python3.10/site-packages/navigation
+[3.759s] byte-compiling /home/terraformers/rover/install/navigation/lib/python3.10/site-packages/navigation/__init__.py to __init__.cpython-310.pyc
+[3.759s] running install_data
+[3.760s] creating /home/terraformers/rover/install/navigation/share/ament_index
+[3.760s] creating /home/terraformers/rover/install/navigation/share/ament_index/resource_index
+[3.760s] creating /home/terraformers/rover/install/navigation/share/ament_index/resource_index/packages
+[3.760s] copying resource/navigation -> /home/terraformers/rover/install/navigation/share/ament_index/resource_index/packages
+[3.760s] copying package.xml -> /home/terraformers/rover/install/navigation/share/navigation
+[3.761s] running install_egg_info
+[3.764s] Copying ../../build/navigation/navigation.egg-info to /home/terraformers/rover/install/navigation/lib/python3.10/site-packages/navigation-0.0.0-py3.10.egg-info
+[3.766s] running install_scripts
+[3.810s] writing list of installed files to '/home/terraformers/rover/build/navigation/install.log'
+[3.909s] Invoked command in '/home/terraformers/rover/src/navigation' returned '0': PYTHONPATH=/home/terraformers/rover/build/navigation/prefix_override:/home/terraformers/rover/install/navigation/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/navigation build --build-base /home/terraformers/rover/build/navigation/build install --record /home/terraformers/rover/build/navigation/install.log --single-version-externally-managed install_data

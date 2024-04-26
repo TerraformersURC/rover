@@ -1,0 +1,20 @@
+[1.120s] Invoking command in '/home/terraformers/rover/build/commstest': PYTHONPATH=/home/terraformers/rover/build/commstest/prefix_override:/home/terraformers/rover/install/commstest/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/terraformers/rover/build/commstest/build --no-deps symlink_data
+[1.620s] running develop
+[1.620s] /usr/lib/python3/dist-packages/setuptools/command/easy_install.py:158: EasyInstallDeprecationWarning: easy_install command is deprecated. Use build and pip and other standards-based tools.
+[1.620s]   warnings.warn(
+[1.917s] running egg_info
+[1.917s] writing commstest.egg-info/PKG-INFO
+[1.918s] writing dependency_links to commstest.egg-info/dependency_links.txt
+[1.918s] writing entry points to commstest.egg-info/entry_points.txt
+[1.918s] writing requirements to commstest.egg-info/requires.txt
+[1.918s] writing top-level names to commstest.egg-info/top_level.txt
+[1.922s] reading manifest file 'commstest.egg-info/SOURCES.txt'
+[1.924s] writing manifest file 'commstest.egg-info/SOURCES.txt'
+[1.926s] running build_ext
+[1.926s] Creating /home/terraformers/rover/install/commstest/lib/python3.10/site-packages/commstest.egg-link (link to .)
+[1.928s] Installing publisher script to /home/terraformers/rover/install/commstest/lib/commstest
+[1.928s] Installing subscriber script to /home/terraformers/rover/install/commstest/lib/commstest
+[1.929s] 
+[1.929s] Installed /home/terraformers/rover/build/commstest
+[1.929s] running symlink_data
+[2.003s] Invoked command in '/home/terraformers/rover/build/commstest' returned '0': PYTHONPATH=/home/terraformers/rover/build/commstest/prefix_override:/home/terraformers/rover/install/commstest/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/terraformers/rover/build/commstest/build --no-deps symlink_data
