@@ -11,6 +11,8 @@ from rover_interfaces.msg import OdomInfo
 T_PAD_MAX_X = 1919
 T_PAD_MAX_Y = 942
 
+MAX_SPEED = 0 # CHANGE TO OUR MAX SPEED
+
 #sets the max and min speeds
 def _clip(value, min, max):
     if value < min:
@@ -43,8 +45,8 @@ class Controller(Node):
         
         #extract the linear and angular velocities
         #scale them by the range of the joystick
-        x = msg.linear.x / T_PAD_MAX_X
-        z = msg.angular.z / T_PAD_MAX_Y
+        x = (msg.linear.x / T_PAD_MAX_X) * MAX_SPEED
+        z = (msg.angular.z / T_PAD_MAX_Y) * MAX_SPEED
 
         # Forward (x>0)
         # Backward (x<0)
