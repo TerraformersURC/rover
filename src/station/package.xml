@@ -1,12 +1,14 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>commstest</name>
+  <name>station</name>
   <version>0.0.0</version>
   <description>TODO: Package description</description>
   <maintainer email="sriman.selvakumaran@gmail.com">terraformers</maintainer>
   <license>TODO: License declaration</license>
 
+  <depend>joy</depend>
+  <depend>std_msgs</depend>
   <depend>rclpy</depend>
 
   <test_depend>ament_copyright</test_depend>

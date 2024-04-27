@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
 
-package_name = 'commstest'
+package_name = 'station'
 
 setup(
     name=package_name,
@@ -20,8 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            "publisher = commstest.publisher:main",
-            "subscriber = commstest.subscriber:main"
+            'drivetrain_controller = station.drivetrain_controller:main'
         ],
     },
 )
