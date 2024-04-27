@@ -7,15 +7,7 @@ from sensor_msgs.msg import Joy
 from std_msgs.msg import Float64
 from interfaces.msg import MotorControl
 from interfaces.msg import OdomInfo
-
-#sets the max and min speeds
-def _clip(value, min, max):
-    if value < min:
-        return min
-    elif value > max:
-        return max
-    else:
-        return value
+from numpy import clip
 
 #the controller subscribes to /joy, /cmd_vel, /and odom_info
 #and publishes MotorControl messages to /motor_control using data from the joysticks
