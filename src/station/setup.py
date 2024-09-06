@@ -13,14 +13,14 @@ setup(
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='terraformers',
-    maintainer_email='sriman.selvakumaran@gmail.com',
+    maintainer='sriman',
+    maintainer_email='srimans@umd.edu',
     description='TODO: Package description',
-    license='TODO: License declaration',
+    license='Apache-2.0',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'drivetrain_controller = station.drivetrain_controller:main'
+            'controller_node = station.controller_node:main'
         ],
     },
 )
