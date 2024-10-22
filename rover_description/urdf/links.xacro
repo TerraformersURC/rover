@@ -1,5 +1,7 @@
 <?xml version="1.0" ?>
-<robot name="rover" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot name="terryjr" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<link name="base_footprint"/>
 
 <link name="base_link">
   <inertial>
@@ -7,18 +9,18 @@
     <mass value="24.252446500368254"/>
     <inertia ixx="0.343153" iyy="0.69552" izz="1.009039" ixy="-0.0" iyz="-0.0" ixz="3.4e-05"/>
   </inertial>
-  
+
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://rover_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://terryjr_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </visual>
-  
+
   <collision>
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://rover_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://terryjr_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -29,18 +31,18 @@
     <mass value="7.695397563761951"/>
     <inertia ixx="0.031684" iyy="0.4866" izz="0.459707" ixy="-0.000248" iyz="0.001358" ixz="-0.000311"/>
   </inertial>
-  
+
   <visual>
     <origin xyz="0.0 0.192 -0.307734" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://rover_description/meshes/wheel_link_right.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://terryjr_description/meshes/wheel_link_right.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </visual>
-  
+
   <collision>
     <origin xyz="0.0 0.192 -0.307734" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://rover_description/meshes/wheel_link_right.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://terryjr_description/meshes/wheel_link_right.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -51,18 +53,18 @@
     <mass value="7.695377181144577"/>
     <inertia ixx="0.031684" iyy="0.486598" izz="0.459705" ixy="-0.000248" iyz="-0.001358" ixz="0.000311"/>
   </inertial>
-  
+
   <visual>
     <origin xyz="-0.0 -0.192 -0.307734" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://rover_description/meshes/wheel_link_left.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://terryjr_description/meshes/wheel_link_left.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </visual>
-  
+
   <collision>
     <origin xyz="-0.0 -0.192 -0.307734" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://rover_description/meshes/wheel_link_left.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://terryjr_description/meshes/wheel_link_left.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -73,18 +75,18 @@
     <mass value="1.4854511848824994"/>
     <inertia ixx="0.005903" iyy="0.009082" izz="0.005903" ixy="0.0" iyz="-0.0" ixz="0.0"/>
   </inertial>
-  
+
   <visual>
     <origin xyz="0.28198 0.235 -0.1" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://rover_description/meshes/wheel_rear_right.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://terryjr_description/meshes/wheel_rear_right.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </visual>
-  
+
   <collision>
     <origin xyz="0.28198 0.235 -0.1" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://rover_description/meshes/wheel_rear_right.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://terryjr_description/meshes/wheel_rear_right.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -95,18 +97,18 @@
     <mass value="1.4854511848824936"/>
     <inertia ixx="0.005903" iyy="0.009082" izz="0.005903" ixy="0.0" iyz="-0.0" ixz="0.0"/>
   </inertial>
-  
+
   <visual>
     <origin xyz="-0.28198 0.235 -0.1" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://rover_description/meshes/wheel_front_right.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://terryjr_description/meshes/wheel_front_right.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </visual>
- 
+
   <collision>
     <origin xyz="-0.28198 0.235 -0.1" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://rover_description/meshes/wheel_front_right.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://terryjr_description/meshes/wheel_front_right.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -117,18 +119,18 @@
     <mass value="1.485455971405251"/>
     <inertia ixx="0.005903" iyy="0.009082" izz="0.005903" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
   </inertial>
-  
+
   <visual>
     <origin xyz="-0.28198 -0.235 -0.1" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://rover_description/meshes/wheel_front_left.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://terryjr_description/meshes/wheel_front_left.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </visual>
-  
+
   <collision>
     <origin xyz="-0.28198 -0.235 -0.1" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://rover_description/meshes/wheel_front_left.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://terryjr_description/meshes/wheel_front_left.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -139,18 +141,18 @@
     <mass value="1.4854559714052498"/>
     <inertia ixx="0.005903" iyy="0.009082" izz="0.005903" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
   </inertial>
-  
+
   <visual>
     <origin xyz="0.28198 -0.235 -0.1" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://rover_description/meshes/wheel_rear_left.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://terryjr_description/meshes/wheel_rear_left.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </visual>
-  
+
   <collision>
     <origin xyz="0.28198 -0.235 -0.1" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://rover_description/meshes/wheel_rear_left.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://terryjr_description/meshes/wheel_rear_left.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -161,18 +163,18 @@
     <mass value="1.4059410622323745"/>
     <inertia ixx="0.025958" iyy="8.8e-05" izz="0.025959" ixy="0.0" iyz="0.0" ixz="0.0"/>
   </inertial>
-  
+
   <visual>
     <origin xyz="-0.295 0.0 -0.310934" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://rover_description/meshes/mid_balance_link.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://terryjr_description/meshes/mid_balance_link.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </visual>
-  
+
   <collision>
     <origin xyz="-0.295 0.0 -0.310934" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://rover_description/meshes/mid_balance_link.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://terryjr_description/meshes/mid_balance_link.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -183,18 +185,18 @@
     <mass value="0.1986031847835859"/>
     <inertia ixx="0.000589" iyy="0.000615" izz="3e-05" ixy="0.0" iyz="2e-06" ixz="-0.000109"/>
   </inertial>
-  
+
   <visual>
     <origin xyz="-0.295 0.220009 -0.310934" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://rover_description/meshes/right_balance_link.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://terryjr_description/meshes/right_balance_link.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </visual>
-  
+
   <collision>
     <origin xyz="-0.295 0.220009 -0.310934" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://rover_description/meshes/right_balance_link.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://terryjr_description/meshes/right_balance_link.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -205,18 +207,18 @@
     <mass value="0.1986022250723333"/>
     <inertia ixx="0.000589" iyy="0.000615" izz="3e-05" ixy="-0.0" iyz="-2e-06" ixz="-0.000109"/>
   </inertial>
-  
+
   <visual>
     <origin xyz="-0.295 -0.220009 -0.310934" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://rover_description/meshes/left_balance_link.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://terryjr_description/meshes/left_balance_link.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </visual>
-  
+
   <collision>
     <origin xyz="-0.295 -0.220009 -0.310934" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://rover_description/meshes/left_balance_link.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://terryjr_description/meshes/left_balance_link.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
