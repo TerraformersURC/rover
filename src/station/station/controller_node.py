@@ -33,7 +33,7 @@ def clip(value, min, max):
 class Controller(Node):
     # FL, BL, FR, BR
     speeds = [0.0, 0.0, 0.0, 0.0]
-
+    
     def __init__(self):
         super().__init__("controller_node")
 
