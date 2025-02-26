@@ -8,8 +8,8 @@
 using namespace std::chrono_literals;
 using std::placeholders::_1;
 
-#define TTL_MSEC 750
-#define RATE_MSEC 375
+#define TTL_MSEC 500
+#define RATE_MSEC 200
 #define SEC_TO_MSEC 1000
 #define NSEC_TO_MSEC 0.000001
 
@@ -33,7 +33,7 @@ class HeartbeatNode : public rclcpp::Node {
 		broadcast_publisher_ = this->create_publisher<std_msgs::msg::Bool>(broadcast_, 5);
 
 		timer = this->create_wall_timer(ttl_duration, std::bind(&HeartbeatNode::timer_callback, this));
-
+		rclcpp::Time now = this->get_clock()->now();
 		last_received_time_.sec = 0;
 		last_received_time_.nanosec = 0;
 	}
@@ -66,7 +66,8 @@ class HeartbeatNode : public rclcpp::Node {
 				+ elapsed.nanoseconds() * NSEC_TO_MSEC;
 
 		if (msecs > TTL_MSEC) {
-			RCLCPP_WARN_THROTTLE(this->get_logger(), *this->get_clock(), 1000, "Heartbeat timeout detected! Broadcasting emergency signal. Time since last heartbeat: %.2f ms", msecs);
+			RCLCPP_WARN_THROTTLE(this->get_logger(), *this->get_clock(), 1000, 
+				"Heartbeat timeout detected! Broadcasting emergency signal. Time since last heartbeat: %.2f ms", msecs);
 		}
 		auto broadcast_message = std_msgs::msg::Bool();
 		broadcast_message.data = msecs > TTL_MSEC;

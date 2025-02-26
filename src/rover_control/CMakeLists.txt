@@ -15,9 +15,9 @@ find_package(comms_interfaces REQUIRED)
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
-add_executable(driver_node_v2 src/driver_node_v2.cpp)
+add_executable(esc_driver src/esc_driver.cpp)
 ament_target_dependencies(
-  driver_node_v2
+  esc_driver
   rclcpp
   geometry_msgs
   std_msgs
@@ -25,7 +25,7 @@ ament_target_dependencies(
 )
 
 install(TARGETS
-  driver_node_v2
+  esc_driver
   DESTINATION lib/${PROJECT_NAME}
 )
 
