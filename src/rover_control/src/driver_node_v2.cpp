@@ -5,7 +5,6 @@
 #include <cstring>
 #include <chrono>
 #include <thread>
-#include <unistd.h>
 #include <rclcpp/rclcpp.hpp>
 #include <geometry_msgs/msg/twist.hpp>
 #include <comms_interfaces/msg/motor_control.hpp>
