@@ -1,12 +1,8 @@
 #!/usr/bin/env python3
 import rclpy
 from rclpy.node import Node
-from rclpy.timer import Timer
-from geometry_msgs.msg import Twist
 from sensor_msgs.msg import Joy
-from std_msgs.msg import Float64
 from comms_interfaces.msg import MotorControl
-from comms_interfaces.msg import OdomInfo
 
 DEADZONE = 0.05
 TURN_SCALING = 0.75

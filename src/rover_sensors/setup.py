@@ -20,6 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'dummy_stereo = rover_sensors.dummy_stereo:main'
         ],
     },
 )
