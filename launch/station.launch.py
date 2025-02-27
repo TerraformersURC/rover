@@ -10,30 +10,26 @@ def generate_launch_description():
 			package='comms_heartbeat',
 			executable='heartbeat',
 			remappings=[
-				('/heartbeat/write', '/heartbeat_rover'),
-				('/heartbeat/read', '/heartbeat_station'),
-				('/heartbeat/status', '/connection_status/rover')
+				('/heartbeat/write', '/heartbeat_station'),
+				('/heartbeat/read', '/heartbeat_rover'),
+				('/heartbeat/status', '/connection_status/station')
 			],
 			output='screen'
 		)
 	])
 	
-	# rover_control
+	# joystick control
 	node_lists.append([
 		Node(
-			package='rover_control',
-			executable='esc_driver',
-			output='screen'
-		)
-	])
-	
-	# rover_sensors
-	node_lists.append([
-		Node(
-			package='rover_sensors',
-			executable='realsense_camera',
+			package='joy',
+			executable='joy_node',
 			output='screen'
 		),
+		Node(
+			package='station_ui',
+			executable='joystick_command',
+			output='screen'
+		)
 	])
 	
 	# Launch nodes from the drive_train package

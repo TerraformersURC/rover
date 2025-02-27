@@ -35,7 +35,7 @@ class Controller(Node):
 
         # create the publisher
         self.motor_control = self.create_publisher(MotorControl, 'motor_control', 10)
-        self.create_timer(0.01, self.motor_callback) # sends every 0.5 seconds, can be changed
+        self.create_timer(0.1, self.motor_callback)
     
         # create the subscribers
         self.velocity_callback = self.create_subscription(Joy, 'joy', self.joy_callback, 10)

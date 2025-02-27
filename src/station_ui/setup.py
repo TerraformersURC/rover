@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'controller_node = station_ui.controller_node:main'
+            'joystick_command = station_ui.controller_command:main'
         ],
     },
 )
