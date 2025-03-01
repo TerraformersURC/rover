@@ -6,8 +6,9 @@
 #include <chrono>
 #include <thread>
 #include <rclcpp/rclcpp.hpp>
-#include <geometry_msgs/msg/twist.hpp>
 #include <comms_interfaces/msg/motor_control.hpp>
+#include <std_msgs/msg/bool.hpp>
+#include <deque>
 
 #define MAX_SPEED 2000
 #define MIN_SPEED 0
@@ -17,7 +18,8 @@ const int MID = (MAX_SPEED + MIN_SPEED) / 2;
 const int HALF_RANGE = ((MAX_SPEED - MIN_SPEED) / 2) - PADDING;
 
 const char* SUBSCRIBER_NAME = "motor_data_subscriber";
-const char* MOTOR_CONTROL_TOPIC = "/motor_control";
+const char* MOTOR_CONTROL_TOPIC = "motor_control";
+const char* STATUS_TOPIC = "connection_status/rover";
 
 using std::placeholders::_1;
 
@@ -35,6 +37,8 @@ class MotorDataSubscriber : public rclcpp::Node{
     MotorDataSubscriber(): Node(SUBSCRIBER_NAME){
         subscription_ = this->create_subscription<comms_interfaces::msg::MotorControl>(
             MOTOR_CONTROL_TOPIC, 10, std::bind(&MotorDataSubscriber::motor_callback, this, _1));
+        status_subscription_ = this->create_subscription<std_msgs::msg::Bool>(
+            STATUS_TOPIC, 5, std::bind(&MotorDataSubscriber::status_callback, this, _1));
     }
 
     private:
@@ -58,7 +62,7 @@ class MotorDataSubscriber : public rclcpp::Node{
         const char* data = formattedData; // Assign the formatted string to the data variable
         int bytesWritten = write(serial_port, data, strlen(data));
         
-        sleep(0.75);
+        sleep(0.25);
     
         if (bytesWritten == -1) {
             RCLCPP_ERROR(this->get_logger(), "Error writing to serial port");
@@ -67,7 +71,18 @@ class MotorDataSubscriber : public rclcpp::Node{
         }
 
     }
+
+    void status_callback(const std_msgs::msg::Bool::SharedPtr msg) const{
+        if (msg->data == false){
+            RCLCPP_ERROR(this->get_logger(), "Connection to station lost");
+        }
+        
+
+    }
+
     rclcpp::Subscription<comms_interfaces::msg::MotorControl>::SharedPtr subscription_;
+    rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr status_subscription_;
+    std::deque<std::tuple<std::chrono::system_clock::time_point,int>> velocity_buffer_;
 };
 
 int main(int argc, char * argv[]) {
