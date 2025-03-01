@@ -11,7 +11,7 @@
 #include <deque>
 
 #define MAX_SPEED 3000
-#define MIN_SPEED 0
+#define MIN_SPEED 1000
 #define PADDING 100
 
 const int MID_SPEED = (MAX_SPEED + MIN_SPEED) / 2;
@@ -73,9 +73,9 @@ class MotorDataSubscriber : public rclcpp::Node{
     }
 
     void status_callback(const std_msgs::msg::Bool::SharedPtr msg) const{
-        if (msg->data == false){
-            RCLCPP_ERROR(this->get_logger(), "Connection to station lost");
-        }
+        if (msg->data == true)
+            return;
+        RCLCPP_ERROR(this->get_logger(), "Connection to station lost");
         char formattedData[50];
         std::sprintf(formattedData, "<%d, %d, %d, %d>", 
             MID_SPEED, MID_SPEED, MID_SPEED, MID_SPEED);
