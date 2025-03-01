@@ -14,7 +14,7 @@
 #define MIN_SPEED 0
 #define PADDING 100
 
-const int MID = (MAX_SPEED + MIN_SPEED) / 2;
+const int MID_SPEED = (MAX_SPEED + MIN_SPEED) / 2;
 const int HALF_RANGE = ((MAX_SPEED - MIN_SPEED) / 2) - PADDING;
 
 const char* SUBSCRIBER_NAME = "motor_data_subscriber";
@@ -26,7 +26,7 @@ using std::placeholders::_1;
 int serial_port;
 
 int pwm_range(float ds4_speed){
-    float pwm = (ds4_speed * HALF_RANGE) + MID;
+    float pwm = (ds4_speed * HALF_RANGE) + MID_SPEED;
     return int(pwm);
 }
 
@@ -78,7 +78,7 @@ class MotorDataSubscriber : public rclcpp::Node{
         }
         char formattedData[50];
         std::sprintf(formattedData, "<%d, %d, %d, %d>", 
-            1500, 1500, 1500, 1500);
+            MID_SPEED, MID_SPEED, MID_SPEED, MID_SPEED);
         int bytesWritten = write(serial_port, 
             (char *) formattedData, strlen(formattedData));
         sleep(0.25);
