@@ -53,11 +53,10 @@ class Controller(Node):
       x = self.joy_scaling(joy_msg.axes[LIN_AXIS])
       z = TURN_SCALING * self.joy_scaling(joy_msg.axes[ANG_AXIS])
       
-      self.speeds = map(self.vel_clip,
-      [
-        x + z, x + z,
-        x - z, x - z
-      ])
+      self.speeds = [self.vel_clip(v) for v in [
+          x + z, x + z, 
+          x - z, x - z,
+        ]]
     
     def joy_scaling(self, x):
         return 0.0 if abs(x) < DEADZONE else x / (1.0 - DEADZONE)
