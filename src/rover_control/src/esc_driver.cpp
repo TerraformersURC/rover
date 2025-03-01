@@ -50,8 +50,8 @@ class MotorDataSubscriber : public rclcpp::Node{
         int br_vel = pwm_range(msg.br);
 
         RCLCPP_INFO(this->get_logger(), "Sending data...");
-        RCLCPP_INFO(this->get_logger(), "%04d %04d | %1.2f %1.3f", fl_vel, fr_vel, msg.fl, msg.fr);
-        RCLCPP_INFO(this->get_logger(), "%04d %04d | %1.2f %1.3f", bl_vel, br_vel, msg.bl, msg.br);
+        RCLCPP_INFO(this->get_logger(), "%04d %04d", fl_vel, fr_vel);
+        RCLCPP_INFO(this->get_logger(), "%04d %04d", bl_vel, br_vel);
         
         // int motor_speeds[4] = {fl_vel, fr_vel, bl_vel, br_vel};
         // write(serial_port, motor_speeds, sizeof(motor_speeds));
@@ -73,7 +73,7 @@ class MotorDataSubscriber : public rclcpp::Node{
     }
 
     void status_callback(const std_msgs::msg::Bool::SharedPtr msg) const{
-        if (msg->data == true)
+        if (!msg->data)
             return;
         RCLCPP_ERROR(this->get_logger(), "Connection to station lost");
         char formattedData[50];
