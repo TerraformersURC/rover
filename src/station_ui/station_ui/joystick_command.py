@@ -28,10 +28,10 @@ def clip(value, min, max):
 #and publishes MotorControl messages to /motor_control using data from the joysticks
 class Controller(Node):
     # FL, BL, FR, BR
-    speeds = [0.0, 0.0, 0.0, 0.0]
     
     def __init__(self):
         super().__init__("controller_node")
+        self.speeds = [0.0, 0.0, 0.0, 0.0]
 
         # create the publisher
         self.motor_control = self.create_publisher(MotorControl, 'motor_control', 10)
