@@ -13,7 +13,7 @@ MAX_SPEED = 1
 T_PAD_MAX_X = 1919
 T_PAD_MAX_Y = 942
 
-MAX_SPEED = 1 # CHANGE TO OUR MAX SPEED
+MAX_SPEED = 1.0 # CHANGE TO OUR MAX SPEED
 
 #sets the max and min speeds
 def clip(value, min, max):
@@ -62,7 +62,7 @@ class Controller(Node):
         return 0.0 if abs(x) < DEADZONE else x / (1.0 - DEADZONE)
     
     def vel_clip(self, x):
-        return clip(x, -MAX_SPEED, MAX_SPEED)
+        return float(clip(x, -MAX_SPEED, MAX_SPEED))
 
 def main(args=None):
     #initialize ros2 communications
