@@ -10,7 +10,7 @@
 #include <std_msgs/msg/bool.hpp>
 #include <deque>
 
-#define MAX_SPEED 2000
+#define MAX_SPEED 3000
 #define MIN_SPEED 0
 #define PADDING 100
 
@@ -76,8 +76,12 @@ class MotorDataSubscriber : public rclcpp::Node{
         if (msg->data == false){
             RCLCPP_ERROR(this->get_logger(), "Connection to station lost");
         }
-        
-
+        char formattedData[50];
+        std::sprintf(formattedData, "<%d, %d, %d, %d>", 
+            1500, 1500, 1500, 1500);
+        int bytesWritten = write(serial_port, 
+            (char *) formattedData, strlen(formattedData));
+        sleep(0.25);
     }
 
     rclcpp::Subscription<comms_interfaces::msg::MotorControl>::SharedPtr subscription_;
