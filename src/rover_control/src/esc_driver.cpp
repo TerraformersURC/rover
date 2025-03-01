@@ -73,7 +73,7 @@ class MotorDataSubscriber : public rclcpp::Node{
     }
 
     void status_callback(const std_msgs::msg::Bool::SharedPtr msg) const {
-        if (msg->data == false)
+        if (!(msg->data))
             return;
         RCLCPP_ERROR(this->get_logger(), "Connection to station lost");
         char formattedData[50];
