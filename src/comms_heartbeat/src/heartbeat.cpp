@@ -18,13 +18,6 @@ const auto ttl_duration = std::chrono::milliseconds(RATE_MSEC);
 class HeartbeatNode : public rclcpp::Node {
   public:
 	HeartbeatNode() : Node("heartbeat_node") {
-		// this->declare_parameter<std::string>("write");
-		// this->declare_parameter<std::string>("read");
-		// this->declare_parameter<std::string>("broadcast", "emergency_broadcast");
-
-		// write_ = this->get_parameter("write").as_string();
-		// read_ = this->get_parameter("read").as_string();
-		// broadcast_ = this->get_parameter("broadcast").as_string();
 		write_ = "/heartbeat/write";
 		read_ = "/heartbeat/read";
 		broadcast_ = "/heartbeat/status";
