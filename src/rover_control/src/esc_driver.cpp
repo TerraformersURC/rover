@@ -41,7 +41,7 @@ class MotorDataSubscriber : public rclcpp::Node {
             MOTOR_CONTROL_TOPIC, 10, std::bind(&MotorDataSubscriber::motor_callback, this, _1));
         status_subscription_ = this->create_subscription<std_msgs::msg::Bool>(
             STATUS_TOPIC, 5, std::bind(&MotorDataSubscriber::status_callback, this, _1));
-        timer_ = this->create_wall_timer(0.25s, std::bind(&MotorDataSubscriber::timer_callback, this));
+        timer_ = this->create_wall_timer(0.1s, std::bind(&MotorDataSubscriber::timer_callback, this));
     }
 
     private:
@@ -148,6 +148,8 @@ int main(int argc, char * argv[]) {
         close(serial_port);
         return 2;
     }
+
+    sleep(5);
 
     // ROS
     rclcpp::init(argc, argv);
