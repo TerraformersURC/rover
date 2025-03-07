@@ -72,7 +72,7 @@ class MotorDataSubscriber : public rclcpp::Node {
 
         char formatted_data[50]; 
         std::sprintf(formatted_data, "<%d, %d, %d, %d>", 
-            fl_vel, fr_vel, bl_vel, br_vel);
+            fl_vel, bl_vel, fr_vel, br_vel);
         
         std::lock_guard<std::mutex> lock(write_mutex_);
         std::strcpy(data_, formatted_data);

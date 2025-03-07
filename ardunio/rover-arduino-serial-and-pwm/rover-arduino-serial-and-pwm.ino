@@ -12,7 +12,7 @@ Servo motorD;
 
 const byte numChars = 32;
 char receivedChars[numChars];
-char tempChars[numChars]; //temporary array for use when parsing
+char tempChars[numChars]; // temporary array for use when parsing
 
 //hold the parsed data
 int aVal = 0;
