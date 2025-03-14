@@ -8,7 +8,7 @@ import pyrealsense2 as rs
 import cv2
 import numpy as np
 
-from comms_interfaces.src.camera_encoding import encode_img
+from shared_python.camera_encoding import encode_img
 
 DIMENSIONS = (640, 480)
 FPS = 30

@@ -10,7 +10,7 @@ import numpy as np
 DIMENSIONS = (640, 480)
 FPS = 30
 
-from comms_interfaces.src.camera_encoding import decode_img
+from comms_interfaces.camera_encoding import decode_img
 class CameraVisual(Node):
     
     def __init__(self):
