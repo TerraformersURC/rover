@@ -19,7 +19,7 @@ find_package(sensor_msgs REQUIRED)
 set(msg_files
   "msg/MotorControl.msg"
   "msg/OdomInfo.msg"
-  "msg/StereoCameraInfo.msg"
+  "msg/StereoCameraStream.msg"
   "msg/Heartbeat.msg"
   DEPENDENCIES geometry_msgs std_msgs sensor_msgs
 )

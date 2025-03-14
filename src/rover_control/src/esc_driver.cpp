@@ -13,7 +13,7 @@
 
 #define MAX_SPEED 2000
 #define MIN_SPEED 1000
-#define PADDING 150
+#define PADDING 50
 
 const int MID_SPEED = (MAX_SPEED + MIN_SPEED) / 2;
 const int HALF_RANGE = ((MAX_SPEED - MIN_SPEED) / 2) - PADDING;
@@ -72,7 +72,7 @@ class MotorDataSubscriber : public rclcpp::Node {
 
         char formatted_data[50]; 
         std::sprintf(formatted_data, "<%d, %d, %d, %d>", 
-            fl_vel, bl_vel, fr_vel, br_vel);
+            br_vel, fr_vel, bl_vel, fl_vel);
         
         std::lock_guard<std::mutex> lock(write_mutex_);
         std::strcpy(data_, formatted_data);

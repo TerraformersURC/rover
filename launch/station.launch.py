@@ -31,6 +31,14 @@ def generate_launch_description():
 			output='screen'
 		)
 	])
+ 
+	node_lists.append([
+		Node(
+			package='station_ui',
+			executable='camera_display',
+			output='screen'
+		)
+	])
 	
 	# Launch nodes from the drive_train package
 

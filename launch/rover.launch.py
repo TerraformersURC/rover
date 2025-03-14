@@ -27,14 +27,13 @@ def generate_launch_description():
 		)
 	])
 	
-	# rover_sensors
-	# node_lists.append([
-	# 	Node(
-	# 		package='rover_sensors',
-	# 		executable='realsense_camera',
-	# 		output='screen'
-	# 	),
-	# ])
+	node_lists.append([
+		Node(
+			package='rover_sensors',
+			executable='realsense_camera',
+			output='screen'
+		),
+	])
 	
 	# Launch nodes from the drive_train package
 
