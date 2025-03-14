@@ -2,7 +2,7 @@
 import rclpy
 from rclpy.node import Node
 from comms_interfaces.msg import StereoCameraStream
-from std_msgs import Header
+from std_msgs.msg import Header
 
 import pyrealsense2 as rs
 import cv2
