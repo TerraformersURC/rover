@@ -11,7 +11,7 @@ JPEG_ENCODE = (
 
 def encode_img(img: np.ndarray, parameters=JPEG_ENCODE) -> bytes | None:
   params = parameters[0]
-  res, buff = cv2.imencode(params[0], img, *params[1])
+  res, buff = cv2.imencode(params[0], img, params[1])
   return buff if res else None
 
 def decode_img(buff: bytes, parameters=JPEG_ENCODE) -> np.ndarray:

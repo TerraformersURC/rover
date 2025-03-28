@@ -28,11 +28,11 @@ class RealsensePublisher(Node):
         
         try:
             self.pipeline.start(self.config)
+            self.create_timer(1 / FPS, self.send_frame) # sends every 0.5 seconds, can be changed
         except Exception as e:
             self.get_logger().error(f"Failed to start pipeline: {e}")
             exit(1)
         
-        self.create_timer(1 / FPS, self.send_frame) # sends every 0.5 seconds, can be changed
     
     #function for the publisher to /motor_control
     def send_frame(self):
@@ -43,7 +43,7 @@ class RealsensePublisher(Node):
         if not depth_frame or not color_frame:
             return
         
-        encoded_color = encode_img(color_frame.get_data())
+        encoded_color = encode_img(np.asanyarray(color_frame.get_data()))
         
         depth_colormap = cv2.applyColorMap(
             cv2.convertScaleAbs(
