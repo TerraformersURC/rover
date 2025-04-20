@@ -77,6 +77,10 @@ bool recvWithStartEndMarkers() {
     && Serial.read() != ESC_DATA_START
   );
 
+  if (Serial.available() <= 0) {
+    return false;
+  }
+
   while (
     Serial.available() > 0 
     && (recieved = Serial.read()) != ESC_DATA_END
