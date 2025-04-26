@@ -5,7 +5,7 @@ JPEG_ENCODE = (
   ('.jpg', (
       int(cv2.IMWRITE_JPEG_QUALITY), 90
     )),
-  (cv2.IMREAD_UNCHANGED)
+  (cv2.IMREAD_UNCHANGED,)
 )
 
 
