@@ -31,6 +31,10 @@ class Controller(Node):
     
     def __init__(self):
         super().__init__("controller_node")
+        self.declare_parameter('max_speed', MAX_SPEED)
+        self.declare_parameter('turn_scaling', TURN_SCALING)
+        self.max_speed = self.get_parameter('maximum_speed').value
+        self.turn_scaling = self.get_parameter('turning_speed').value
         self.speeds = [0.0, 0.0, 0.0, 0.0]
 
         # create the publisher
@@ -50,8 +54,9 @@ class Controller(Node):
         self.motor_control.publish(msg)
         
     def joy_callback(self, joy_msg):
-      x = -self.joy_scaling(joy_msg.axes[LIN_AXIS])
-      z = TURN_SCALING * self.joy_scaling(joy_msg.axes[ANG_AXIS])
+      # BOTH ARE FLIPPED
+      x = self.joy_scaling(-joy_msg.axes[LIN_AXIS])
+      z = self.turn_scaling * self.joy_scaling(-joy_msg.axes[ANG_AXIS])
       
       self.speeds = [self.vel_clip(v) for v in [
           x - z, x - z, 
@@ -62,7 +67,7 @@ class Controller(Node):
         return 0.0 if abs(x) < DEADZONE else x / (1.0 - DEADZONE)
     
     def vel_clip(self, x):
-        return float(clip(x, -MAX_SPEED, MAX_SPEED))
+        return float(clip(x, -self.max_speed, self.max_speed))
 
 def main(args=None):
     #initialize ros2 communications

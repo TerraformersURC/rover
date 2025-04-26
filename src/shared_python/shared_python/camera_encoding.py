@@ -2,8 +2,8 @@ import cv2
 import numpy as np
 
 JPEG_ENCODE = (
-  ('jpeg', (
-      int(cv2.IMWRITE_JPEG_QUALITY), 10
+  ('.jpg', (
+      int(cv2.IMWRITE_JPEG_QUALITY), 90
     )),
   (cv2.IMREAD_UNCHANGED)
 )

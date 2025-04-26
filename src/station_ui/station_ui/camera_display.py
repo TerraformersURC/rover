@@ -26,8 +26,9 @@ class CameraVisual(Node):
         color_frame = decode_img(msg.rgb.tobytes())
         depth_frame = decode_img(msg.depth.tobytes())
         
-        cv2.imshow('Color', color_frame)
-        cv2.imshow('Depth', depth_frame)
+        # Stack the two images side by side and display them
+        combined = np.concatenate((color_frame, depth_frame), axis=1) 
+        cv2.imshow('Color + Depth', combined)
         cv2.waitKey(1)
 
 def main(args=None):

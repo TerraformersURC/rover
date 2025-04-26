@@ -28,7 +28,8 @@ def generate_launch_description():
 		Node(
 			package='station_ui',
 			executable='joystick_command',
-			output='screen'
+			output='screen',
+			parameters=[{'max_speed': 0.75, 'turn_scaling': 0.5}]
 		)
 	])
  
