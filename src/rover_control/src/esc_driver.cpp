@@ -60,23 +60,30 @@ class MotorDataSubscriber : public rclcpp::Node {
 
     void motor_callback(const comms_interfaces::msg::MotorControl & msg) const{
         // Retrieve each motor's speeds here
-        std::array<double, 4> incoming_speeds = {
-            msg.br, msg.fr, msg.bl, msg.fl
-        };
-        double diff = 0.0;
-        for (size_t i = 0; i < 4; i++) {
-            diff = (pwm_range(incoming_speeds[i]) - motor_speeds_[i]) * SCALAR;
-            motor_speeds_[i] += diff;
-        }
+
+        // std::array<double, 4> incoming_speeds = {
+        //     msg.br, msg.fr, msg.bl, msg.fl
+        // };
+        // double diff = 0.0;
+        // for (size_t i = 0; i < 4; i++) {
+        //     diff = (pwm_range(incoming_speeds[i]) - motor_speeds_[i]) * SCALAR;
+        //     motor_speeds_[i] += diff;
+        // }
 
         //write(serial_port, motor_speeds, sizeof(motor_speeds));
 
         char formatted_data[50]; 
+        // std::sprintf(formatted_data, "<%d, %d, %d, %d>", 
+        //     (int) (std::round(motor_speeds_[0])), 
+        //     (int) (std::round(motor_speeds_[1])),
+        //     (int) (std::round(motor_speeds_[2])), 
+        //     (int) (std::round(motor_speeds_[3]))
+        // );
         std::sprintf(formatted_data, "<%d, %d, %d, %d>", 
-            (int) (motor_speeds_[0]), 
-            (int) (motor_speeds_[1]),
-            (int) (motor_speeds_[2]), 
-            (int) (motor_speeds_[3])
+            pwm_range(msg.br),
+            pwm_range(msg.fr),
+            pwm_range(msg.bl),
+            pwm_range(msg.fl) 
         );
         
         std::lock_guard<std::mutex> lock(write_mutex_);
