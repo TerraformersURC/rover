@@ -61,7 +61,7 @@ class MotorDataSubscriber : public rclcpp::Node {
     void motor_callback(const comms_interfaces::msg::MotorControl & msg) const{
         // Retrieve each motor's speeds here
         std::array<double, 4> incoming_speeds = {
-            msg.fl, msg.fr, msg.bl, msg.br
+            msg.br, msg.fr, msg.bl, msg.fl
         };
         for (size_t i = 0; i < 4; i++) {
             motor_speeds_[i] += (int) (
