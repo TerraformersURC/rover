@@ -70,8 +70,8 @@ class Controller(Node):
       yaw_diff = (self.yaw_scaling * joy_msg.axes[YAW_AXIS])
       pitch_diff = (self.pitch_scaling * joy_msg.axes[PITCH_AXIS])
       self.current_rotation = [
-        max(self.current_rotation[0] + yaw_diff, 225),
-        max(self.current_rotation[1] + pitch_diff, 225),
+        clip(self.current_rotation[0] + yaw_diff, 0, 225),
+        clip(self.current_rotation[1] + pitch_diff, 0, 225),
       ]
       pitch = self.yaw_scaling * joy_msg.axes[PITCH_AXIS]
       yaw = self.yaw_scaling * joy_msg.axes[YAW_AXIS]
