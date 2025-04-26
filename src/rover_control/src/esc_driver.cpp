@@ -9,7 +9,7 @@
 #include <rclcpp/rclcpp.hpp>
 #include <comms_interfaces/msg/motor_control.hpp>
 #include <std_msgs/msg/bool.hpp>
-#include <deque>
+#include <array>
 
 #define MAX_SPEED 2000
 #define MIN_SPEED 1000
@@ -31,6 +31,8 @@ int pwm_range(float ds4_speed){
     float pwm = (ds4_speed * HALF_RANGE) + MID_SPEED;
     return int(pwm);
 }
+
+const float SCALAR = 0.5f;
 
 // Construct the ROS2 node
 class MotorDataSubscriber : public rclcpp::Node {
@@ -58,10 +60,15 @@ class MotorDataSubscriber : public rclcpp::Node {
 
     void motor_callback(const comms_interfaces::msg::MotorControl & msg) const{
         // Retrieve each motor's speeds here
-        int fl_vel = pwm_range(msg.fl);
-        int fr_vel = pwm_range(msg.fr);
-        int bl_vel = pwm_range(msg.bl);
-        int br_vel = pwm_range(msg.br);
+        std::array<double, 4> incoming_speeds = {
+            msg.fl, msg.fr, msg.bl, msg.br
+        };
+        for (size_t i = 0; i < 4; i++) {
+            motor_speeds_[i] += (int) (
+                (pwm_range(incoming_speeds[i]) - motor_speeds_[i]) * SCALAR
+            );
+        }
+
 
         // RCLCPP_INFO(this->get_logger(), "Recieved data:");
         // RCLCPP_INFO(this->get_logger(), "%04d %04d", fl_vel, fr_vel);
@@ -70,9 +77,11 @@ class MotorDataSubscriber : public rclcpp::Node {
         // int motor_speeds[4] = {fl_vel, fr_vel, bl_vel, br_vel};
         // write(serial_port, motor_speeds, sizeof(motor_speeds));
 
-        char formatted_data[50]; 
+        char formatted_data[32]; 
         std::sprintf(formatted_data, "<%d, %d, %d, %d>", 
-            br_vel, fr_vel, bl_vel, fl_vel);
+            motor_speeds_[0], motor_speeds_[1], 
+            motor_speeds_[2], motor_speeds_[3]
+        );
         
         std::lock_guard<std::mutex> lock(write_mutex_);
         std::strcpy(data_, formatted_data);
@@ -87,7 +96,7 @@ class MotorDataSubscriber : public rclcpp::Node {
         
         RCLCPP_WARN(this->get_logger(), "Connection to station lost!");
 
-        char formatted_data[50];
+        char formatted_data[32];
         std::sprintf(formatted_data, "<%d, %d, %d, %d>", 
             MID_SPEED, MID_SPEED, MID_SPEED, MID_SPEED);
         
@@ -100,9 +109,9 @@ class MotorDataSubscriber : public rclcpp::Node {
     rclcpp::Subscription<comms_interfaces::msg::MotorControl>::SharedPtr subscription_;
     rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr status_subscription_;
     rclcpp::TimerBase::SharedPtr timer_;
-    mutable char data_[50];
+    mutable char data_[32];
     mutable std::mutex write_mutex_;
-    std::deque<std::tuple<std::chrono::system_clock::time_point,int>> velocity_buffer_;
+    mutable std::array<int, 4> motor_speeds_{MID_SPEED, MID_SPEED, MID_SPEED, MID_SPEED};
 };
 
 int main(int argc, char * argv[]) {
