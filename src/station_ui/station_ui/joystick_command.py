@@ -33,8 +33,8 @@ class Controller(Node):
         super().__init__("controller_node")
         self.declare_parameter('max_speed', MAX_SPEED)
         self.declare_parameter('turn_scaling', TURN_SCALING)
-        self.max_speed = self.get_parameter('maximum_speed').value
-        self.turn_scaling = self.get_parameter('turning_speed').value
+        self.max_speed = self.get_parameter('max_speed').value
+        self.turn_scaling = self.get_parameter('turn_scaling').value
         self.speeds = [0.0, 0.0, 0.0, 0.0]
 
         # create the publisher
