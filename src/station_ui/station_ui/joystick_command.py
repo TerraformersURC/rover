@@ -12,8 +12,8 @@ PITCH_AXIS = 7
 
 MAX_SPEED = 1
 TURN_SCALING = 0.5
-YAW_SCALING = 2.0
-PITCH_SCALING = 1.5
+YAW_SCALING = 3.0
+PITCH_SCALING = 3.0
 
 T_PAD_MAX_X = 1919
 T_PAD_MAX_Y = 942
@@ -42,8 +42,8 @@ class Controller(Node):
         self.turn_scaling = self.get_parameter('turn_scaling').value
         self.yaw_scaling = YAW_SCALING
         self.pitch_scaling = PITCH_SCALING
-        self.output = [0.0, 0.0, 0.0, 0.0, 0, 0]
-        self.current_rotation = [0, 0]
+        self.output = [0.0, 0.0, 0.0, 0.0, 90, 90]
+        self.current_rotation = [90, 90]
 
         # create the publisher
         self.motor_control = self.create_publisher(MotorControl, 'motor_control', 10)
