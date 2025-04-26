@@ -32,7 +32,7 @@ int pwm_range(float ds4_speed){
     return int(pwm);
 }
 
-const float SCALAR = 0.25f;
+const double SCALAR = 0.25f;
 
 // Construct the ROS2 node
 class MotorDataSubscriber : public rclcpp::Node {
@@ -63,29 +63,25 @@ class MotorDataSubscriber : public rclcpp::Node {
         std::array<double, 4> incoming_speeds = {
             msg.br, msg.fr, msg.bl, msg.fl
         };
-        float diff = 0.0;
+        double diff = 0.0;
         for (size_t i = 0; i < 4; i++) {
             diff = (pwm_range(incoming_speeds[i]) - motor_speeds_[i]) * SCALAR;
-            if (std::abs(diff) < 1)
-                motor_speeds_[i] += (diff > 0) ? 1 : -1;
-            else
-                motor_speeds_[i] += (int) (diff);
+            motor_speeds_[i] += diff;
         }
-        
-        int motor_speeds[4] = {motor_speeds_[3], motor_speeds_[1], motor_speeds_[2], motor_speeds_[0]};
-        write(serial_port, motor_speeds, sizeof(motor_speeds));
+
+        //write(serial_port, motor_speeds, sizeof(motor_speeds));
 
         char formatted_data[50]; 
         std::sprintf(formatted_data, "<%d, %d, %d, %d>", 
-            motor_speeds_[0], motor_speeds_[1], 
-            motor_speeds_[2], motor_speeds_[3]
+            (int) (motor_speeds_[0]), 
+            (int) (motor_speeds_[1]),
+            (int) (motor_speeds_[2]), 
+            (int) (motor_speeds_[3])
         );
         
         std::lock_guard<std::mutex> lock(write_mutex_);
         std::strcpy(data_, formatted_data);
-
         return;
-
     }
 
     void status_callback(const std_msgs::msg::Bool::SharedPtr msg) const {
@@ -100,7 +96,6 @@ class MotorDataSubscriber : public rclcpp::Node {
         
         std::lock_guard<std::mutex> lock(write_mutex_);
         std::strcpy(data_, formatted_data);
-    
         return;
     }
 
@@ -109,7 +104,7 @@ class MotorDataSubscriber : public rclcpp::Node {
     rclcpp::TimerBase::SharedPtr timer_;
     mutable char data_[50];
     mutable std::mutex write_mutex_;
-    mutable std::array<int, 4> motor_speeds_{MID_SPEED, MID_SPEED, MID_SPEED, MID_SPEED};
+    mutable std::array<double, 4> motor_speeds_{MID_SPEED, MID_SPEED, MID_SPEED, MID_SPEED};
 };
 
 int main(int argc, char * argv[]) {
