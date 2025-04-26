@@ -47,7 +47,7 @@ class MotorDataSubscriber : public rclcpp::Node {
     private:
     void timer_callback() const {
         std::lock_guard<std::mutex> lock(write_mutex_);
-        RCLCPP_INFO(this->get_logger(), "%s", data_);
+        // RCLCPP_INFO(this->get_logger(), "%s", data_);
         int bytesWritten = write(serial_port, data_, strlen(data_));
         if (bytesWritten == -1) {
             RCLCPP_ERROR(this->get_logger(), "Error writing to serial port");

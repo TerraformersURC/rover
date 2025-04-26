@@ -5,7 +5,7 @@ from sensor_msgs.msg import Joy
 from comms_interfaces.msg import MotorControl
 
 DEADZONE = 0.05
-TURN_SCALING = 0.9
+TURN_SCALING = 0.5
 LIN_AXIS = 1
 ANG_AXIS = 3
 MAX_SPEED = 1
@@ -50,7 +50,7 @@ class Controller(Node):
         self.motor_control.publish(msg)
         
     def joy_callback(self, joy_msg):
-      x = self.joy_scaling(joy_msg.axes[LIN_AXIS])
+      x = -self.joy_scaling(joy_msg.axes[LIN_AXIS])
       z = TURN_SCALING * self.joy_scaling(joy_msg.axes[ANG_AXIS])
       
       self.speeds = [self.vel_clip(v) for v in [

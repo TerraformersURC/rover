@@ -55,16 +55,17 @@ void setup() {
     strip.show();            // Turn OFF all pixels ASAP
     strip.setBrightness(50); // Set BRIGHTNESS to about 1/5 (max = 255)
 
-    delay(5000); // Allow ESCs to recognize signal and settle down
-    colorWipe(strip.Color(0,0,255),5); // Blue
+    delay(7000); // Allow ESCs to recognize signal and settle down
+    // colorWipe(strip.Color(0,0,255),5); // Blue
 }
 
 void loop() {
-  if (recvWithStartEndMarkers()) {
-    strcpy(esc_data, esc_buffer);
-    parseData();
-    sendData();
-  }
+  colorWipe((0,0,225),10);//Blue
+  // if (recvWithStartEndMarkers()) {
+  //   strcpy(esc_data, esc_buffer);
+  //   parseData();
+  //   sendData();
+  // }
 }
 
 const char ESC_DATA_START = '<', ESC_DATA_END = '>';
@@ -104,7 +105,7 @@ void parseData() {
     char* i; // this is used by strtok() as an index
 
     i = strtok(esc_data, ","); // get the first part
-    input_br = i != NULL ? atoi(i) : ESC_SIGNAL_TOP;
+    input_br = i != NULL ? atoi(i) : ESC_SIGNAL_STOP;
  
     i = strtok(NULL, ","); // continue where it left off
     input_fr = i != NULL ? atoi(i) : ESC_SIGNAL_STOP;
