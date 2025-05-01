@@ -9,6 +9,8 @@ LIN_AXIS = 1
 ANG_AXIS = 3
 YAW_AXIS = 6
 PITCH_AXIS = 7
+RESET_CAM_BUTTON = 3
+DEFAULT_CAM_POSITION = [90, 90]
 
 MAX_SPEED = 1
 TURN_SCALING = 0.5
@@ -43,7 +45,7 @@ class Controller(Node):
         self.yaw_scaling = YAW_SCALING
         self.pitch_scaling = PITCH_SCALING
         self.output = [0.0, 0.0, 0.0, 0.0, 90, 90]
-        self.current_rotation = [90, 90]
+        self.current_rotation = DEFAULT_CAM_POSITION
 
         # create the publisher
         self.motor_control = self.create_publisher(MotorControl, 'motor_control', 10)
@@ -69,10 +71,13 @@ class Controller(Node):
       z = self.turn_scaling * self.joy_scaling(-joy_msg.axes[ANG_AXIS])
       yaw_diff = (self.yaw_scaling * joy_msg.axes[YAW_AXIS])
       pitch_diff = (self.pitch_scaling * joy_msg.axes[PITCH_AXIS])
-      self.current_rotation = [
-        clip(self.current_rotation[0] + yaw_diff, 0, 225),
-        clip(self.current_rotation[1] + pitch_diff, 0, 225),
-      ]
+      if joy_msg.buttons[RESET_CAM_BUTTON] > 0:
+          self.current_rotation = DEFAULT_CAM_POSITION
+      else:
+        self.current_rotation = [
+            clip(self.current_rotation[0] + yaw_diff, 0, 225),
+            clip(self.current_rotation[1] + pitch_diff, 0, 225),
+        ]
       pitch = self.yaw_scaling * joy_msg.axes[PITCH_AXIS]
       yaw = self.yaw_scaling * joy_msg.axes[YAW_AXIS]
       

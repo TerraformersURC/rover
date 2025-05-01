@@ -29,7 +29,7 @@ def generate_launch_description():
 			package='station_ui',
 			executable='joystick_command',
 			output='screen',
-			parameters=[{'max_speed': 0.75, 'turn_scaling': 0.675}]
+			parameters=[{'max_speed': 0.9, 'turn_scaling': 0.75}]
 		)
 	])
  
