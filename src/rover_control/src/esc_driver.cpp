@@ -1,0 +1,170 @@
+#include <iostream>
+#include <fcntl.h>
+#include <termios.h>
+#include <unistd.h>
+#include <cstring>
+#include <chrono>
+#include <mutex>
+#include <thread>
+#include <rclcpp/rclcpp.hpp>
+#include <comms_interfaces/msg/motor_control.hpp>
+#include <std_msgs/msg/bool.hpp>
+#include <array>
+
+#define MAX_SPEED 2000
+#define MIN_SPEED 1000
+#define PADDING 50
+
+const int MID_SPEED = (MAX_SPEED + MIN_SPEED) / 2;
+const int HALF_RANGE = ((MAX_SPEED - MIN_SPEED) / 2) - PADDING;
+
+const char* SUBSCRIBER_NAME = "motor_data_subscriber";
+const char* MOTOR_CONTROL_TOPIC = "motor_control";
+const char* STATUS_TOPIC = "connection_status/rover";
+
+using namespace std::chrono_literals;
+using std::placeholders::_1;
+
+int serial_port;
+
+int pwm_range(float ds4_speed){
+    float pwm = (ds4_speed * HALF_RANGE) + MID_SPEED;
+    return int(pwm);
+}
+
+const double SCALAR = 0.25f;
+
+// Construct the ROS2 node
+class MotorDataSubscriber : public rclcpp::Node {
+
+    public:
+    MotorDataSubscriber(): Node(SUBSCRIBER_NAME) {
+        subscription_ = this->create_subscription<comms_interfaces::msg::MotorControl>(
+            MOTOR_CONTROL_TOPIC, 10, std::bind(&MotorDataSubscriber::motor_callback, this, _1));
+        status_subscription_ = this->create_subscription<std_msgs::msg::Bool>(
+            STATUS_TOPIC, 5, std::bind(&MotorDataSubscriber::status_callback, this, _1));
+        timer_ = this->create_wall_timer(0.1s, std::bind(&MotorDataSubscriber::timer_callback, this));
+    }
+
+    private:
+    void timer_callback() const {
+        std::lock_guard<std::mutex> lock(write_mutex_);
+        RCLCPP_INFO(this->get_logger(), "%s", data_);
+        int bytesWritten = write(serial_port, data_, strlen(data_));
+        if (bytesWritten == -1) {
+            RCLCPP_ERROR(this->get_logger(), "Error writing to serial port");
+            close(serial_port);
+            return;
+        }
+    }
+
+    void motor_callback(const comms_interfaces::msg::MotorControl & msg) const{
+        // Retrieve each motor's speeds here
+
+        std::array<double, 4> incoming_speeds = {
+            msg.br, msg.fr, msg.bl, msg.fl
+        };
+        double diff = 0.0;
+        for (size_t i = 0; i < 4; i++) {
+            diff = (pwm_range(incoming_speeds[i]) - motor_speeds_[i]) * SCALAR;
+            motor_speeds_[i] += diff;
+        }
+
+        //write(serial_port, motor_speeds, sizeof(motor_speeds));
+
+        char formatted_data[50]; 
+        std::sprintf(formatted_data, "<%d, %d, %d, %d, %d, %d>", 
+            (int) (std::round(motor_speeds_[0])), 
+            (int) (std::round(motor_speeds_[1])),
+            (int) (std::round(motor_speeds_[2])), 
+            (int) (std::round(motor_speeds_[3])),
+            msg.yaw, msg.pitch);
+        // std::sprintf(formatted_data, "<%d, %d, %d, %d>", 
+        //     pwm_range(msg.br),
+        //     pwm_range(msg.fr),
+        //     pwm_range(msg.bl),
+        //     pwm_range(msg.fl) 
+        // );
+        
+        std::lock_guard<std::mutex> lock(write_mutex_);
+        std::strcpy(data_, formatted_data);
+        return;
+    }
+
+    void status_callback(const std_msgs::msg::Bool::SharedPtr msg) const {
+        if (!(msg->data))
+            return;
+        
+        RCLCPP_WARN(this->get_logger(), "Connection to station lost!");
+
+        char formatted_data[50];
+        std::sprintf(formatted_data, "<%d, %d, %d, %d>", 
+            MID_SPEED, MID_SPEED, MID_SPEED, MID_SPEED);
+        
+        std::lock_guard<std::mutex> lock(write_mutex_);
+        std::strcpy(data_, formatted_data);
+        return;
+    }
+
+    rclcpp::Subscription<comms_interfaces::msg::MotorControl>::SharedPtr subscription_;
+    rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr status_subscription_;
+    rclcpp::TimerBase::SharedPtr timer_;
+    mutable char data_[50];
+    mutable std::mutex write_mutex_;
+    mutable std::array<double, 4> motor_speeds_{MID_SPEED, MID_SPEED, MID_SPEED, MID_SPEED};
+};
+
+int main(int argc, char * argv[]) {
+    // temporary solution to get arduino port, use udev / linux sysfs in future
+    const char* arduino_port_format = "/dev/ttyACM%d";
+    int arduino_port_id = 0;
+    char port_name[32];
+    std::sprintf(port_name, arduino_port_format, arduino_port_id);
+
+    while (arduino_port_id < 100 
+            && (serial_port = open(port_name, O_WRONLY | O_NOCTTY)) == -1) {
+        arduino_port_id++;
+        std::sprintf(port_name, arduino_port_format, arduino_port_id);
+    }
+
+    if (serial_port == -1) {
+        RCLCPP_ERROR(rclcpp::get_logger("rclcpp"), 
+            "could not find arduino port. is it connected?"
+        );
+        return 2;
+    }
+
+    struct termios tty;
+    memset(&tty, 0, sizeof(tty));
+
+    if (tcgetattr(serial_port, &tty) != 0) {
+        RCLCPP_ERROR(rclcpp::get_logger("rclcpp"), 
+            "error getting serial port attributes.");
+        close(serial_port);
+        return 2;
+    }
+
+    cfsetospeed(&tty, B115200);
+    tty.c_cflag |= (CLOCAL | CREAD);
+    tty.c_cflag &= ~CSIZE;
+    tty.c_cflag |= CS8;
+    tty.c_cflag &= ~PARENB;
+    tty.c_cflag &= ~CSTOPB;
+    tty.c_cflag &= ~CRTSCTS;
+
+    if (tcsetattr(serial_port, TCSANOW, &tty) != 0) {
+        RCLCPP_ERROR(rclcpp::get_logger("rclcpp"), "error getting serial port attributes");
+        close(serial_port);
+        return 2;
+    }
+
+    sleep(5);
+
+    // ROS
+    rclcpp::init(argc, argv);
+    rclcpp::spin(std::make_shared<MotorDataSubscriber>());
+    rclcpp::shutdown();
+
+    close(serial_port);
+    return 0;
+}
